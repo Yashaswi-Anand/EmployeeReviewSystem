@@ -1,0 +1,39 @@
+<div>
+    <form action="/user/createUser" method="POST">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="userName" id="name" placeholder="Enter Name">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" placeholder="Enter Your email" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+        </div>
+        <div>
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" >
+        </div>
+        <div>
+            <label for="status" class="fontSize">Status</label>
+                <span class="dropdown-container">
+                    <!-- dropdown menu -->
+                    <select name="status" id="dropdown-category">
+                        <option value="employee">Employee</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </span>
+        </div>
+        <div>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+    <div>
+        <h2>------------------ OR ---------------------</h2>
+    </div>
+    <div>
+        <a href="/user/signIn"><button type="submit">Sign In</button></a>
+    </div>
+</div>
