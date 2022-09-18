@@ -1,39 +1,46 @@
+<link rel="stylesheet" href="/CSS/signinSignup.css">
+
+<aside>
+    <a href="/user/signIn"><button class="btn-right" type="submit"><i><b>SIGN IN</b></i></button></a>
+    <div class="mt-5">
+        <form action="/user/createUser" method="POST">
+            <div>
+                <label for="name">Name:</label><br>
+                <input type="text" name="userName" id="name" placeholder="Enter Name">
+            </div>
+            <div>
+                <label for="email">Email:</label><br>
+                <input type="text" name="email" id="email" placeholder="Enter Your email" required>
+            </div>
+            <div>
+                <label for="password">Password:</label><br>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
+            <div>
+                <label for="confirm_password">Confirm Password:</label><br>
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" >
+            </div>
+            
+            <div>
+                <label for="status" class="fontSize">Status</label><br>
+                    <span>
+                        <!-- dropdown menu -->
+                        <select name="status" class="dropdown-items">
+                            <option value="employee">Employee</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </span>
+            </div>
+            <div>
+                <button class="btn" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+</aside>
+
 <div>
-    <form action="/user/createUser" method="POST">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" name="userName" id="name" placeholder="Enter Name">
-        </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="text" name="email" id="email" placeholder="Enter Your email" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" placeholder="Password" required>
-        </div>
-        <div>
-            <label for="confirm_password">Confirm Password:</label>
-            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" >
-        </div>
-        <div>
-            <label for="status" class="fontSize">Status</label>
-                <span class="dropdown-container">
-                    <!-- dropdown menu -->
-                    <select name="status" id="dropdown-category">
-                        <option value="employee">Employee</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                </span>
-        </div>
-        <div>
-            <button type="submit">Register</button>
-        </div>
-    </form>
     <div>
-        <h2>------------------ OR ---------------------</h2>
+        <h2 class="center">Employee Review System</h2>
     </div>
-    <div>
-        <a href="/user/signIn"><button type="submit">Sign In</button></a>
-    </div>
+    <img src="https://img.freepik.com/free-vector/employer-meeting-job-applicant-pre-employment-assessment-employee-evaluation-assessment-form-report-performance-review-concept-illustration_335657-2058.jpg" alt="image">
 </div>

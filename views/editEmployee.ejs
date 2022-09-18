@@ -1,0 +1,44 @@
+<!-- <link rel="stylesheet" href="/CSS/signinSignup.css"> -->
+
+<div class="mt-5">
+    <form action="" method="POST">
+        <div>
+            <label for="name">Name:</label><br>
+            <input type="text" name="userName" value=<%= user.userName %> placeholder="Enter Name">
+        </div>
+        <div>
+            <label for="email">Email:</label><br>
+            <input type="text" name="email" value=<%= user.email %> placeholder="Enter Your email" required>
+        </div>
+        <div>
+            <label for="password">Password:</label><br>
+            <input type="password" name="password" value=<%= user.password %> placeholder="Password" required>
+        </div>
+        <div>
+            <label for="per_review">performance Review</label><br>
+            <input type="text" value=<%= user.performanceReview %> placeholder="per_review">
+        </div>
+        
+        <div>
+            <label for="status" class="fontSize">Status</label><br>
+                <span>
+                    <!-- dropdown menu -->
+                    <% if(user.status !== "admin"){ %>
+                        <select name="status" class="dropdown-items">
+                            <option value="employee">Employee</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    <% }else{ %>
+                        <select name="status" class="dropdown-items">
+                            <option value="admin">Admin</option>
+                            <option value="employee">Employee</option>
+                        </select>
+                    <% } %>
+                </span>
+        </div>
+        employee paricipate to feedback /  
+        <div>
+            <button class="btn" type="submit">Save Update</button>
+        </div>
+    </form>
+</div>

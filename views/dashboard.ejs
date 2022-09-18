@@ -1,3 +1,27 @@
+<link rel="stylesheet" href="/CSS/style.css">
 <div>
-    
+    <div class="rightcontainer">
+        <a ><button>Admin</button></a>
+        <a><button>Employee</button></a>
+        <button>Add Employee</button>
+    </div>
+    <div class="container center">
+        <% for(let user of users) { %>
+                <div class="row p-1 list-design w-100 bg-info">
+                    <div class="col-2">
+                        <a><h3><%= user.userName %></h3> </a>
+                    </div>
+                    <div class="col-4">
+                        <a><h3><%= user.email %></h3> </a>
+                    </div>
+                    <div class="col-3">
+                        <a><h3><%= user.performanceReview %></h3> </a>
+                    </div>
+                    <div class="col-3">
+                        <a href="/user/editEmployee/<%= user._id %>"><i class="fa-solid fa-pen-to-square" style="font-size: 1.5rem;"></i></a>  &ensp; &ensp;
+                        <a href="/user/deleteEmployee/<%= user._id %>"><i class="fa-solid fa-trash-can" style="font-size: 1.5rem;"></i></a>
+                    </div>
+                </div>
+        <% } %>
+    </div>
 </div>

@@ -16,6 +16,10 @@ const userSchema = mongoose.Schema({
     status:{
         type: String,
         required: true,
+    },
+    performanceReview:{
+        type:Number,
+        default:1
     }
 },{ timeStamps: true})
 

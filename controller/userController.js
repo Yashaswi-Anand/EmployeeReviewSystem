@@ -62,13 +62,52 @@ exports.loginUser = async(req,res) =>{
             return res.status(400).json({message: "Invalid password"})
         }
         // return res.status(200).json({user,message: "User successfully found."})
+        if(user.status === "admin")
+            return res.redirect('/user/dashboard');
+        else
+            return res.redirect('/user/employeeView');
+        
+    } catch (error) {
+        return res.status(500).json({message: "Internal server error."})
+    }
+}
+
+exports.dashboard = async(req,res)=>{
+    try {
+        const users = await User.find();
         return res.render('dashboard',{
             title:"EWS | Dashboard",
-            user:user
+            users:users
         });
     } catch (error) {
         return res.status(500).json({message: "Internal server error."})
     }
+}
+
+exports.employeeView = async(req,res) =>{
+    try {
+        const users = await User.find();
+        return res.render('employeeView',{
+            title:"EWS | Dashboard",
+            users:users
+        });
+    } catch (error) {
+        return res.status(500).json({message: "Internal server error."})
+    }
+}
+
+// employee delete
+exports.deleteEmployee = async(req,res) =>{
+    const userId = req.params.id;
+    console.log(userId);
+    const user = await User.findByIdAndDelete(userId);
+    return res.redirect('/user/dashboard');
+}
+
+exports.editEmployee = async(req,res) =>{
+    const userId = req.params.id;
+    const user = await User.findOne({"_id": userId});
+    return res.render('editEmployee', {title: "Edit Employee", user: user});
 }
 
 
