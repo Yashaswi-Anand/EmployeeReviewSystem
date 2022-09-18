@@ -20,6 +20,10 @@ const userSchema = mongoose.Schema({
     performanceReview:{
         type:Number,
         default:1
+    },
+    participation:{
+        type:Boolean,
+        default: false
     }
 },{ timeStamps: true})
 

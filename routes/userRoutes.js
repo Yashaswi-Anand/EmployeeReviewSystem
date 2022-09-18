@@ -1,5 +1,5 @@
 const express = require('express');
-const { createUser, getUser, loginUser, signUp, signIn, dashboard, deleteEmployee, editEmployee, employeeView } = require('../controller/userController');
+const { createUser, getUser, loginUser, signUp, signIn, dashboard, deleteEmployee, editEmployee, employeeView, updateEditedEmployee, addEmployee, addNewEmployee } = require('../controller/userController');
 const route = express.Router();
 
 // signUp user
@@ -20,5 +20,10 @@ route.get('/deleteEmployee/:id', deleteEmployee);
 route.get('/editEmployee/:id', editEmployee);
 // employee dashboard
 route.get('/employeeView', employeeView);
+// update employee edited date
+route.post('/updateEditedEmployee/:id',updateEditedEmployee);
+// add new employee
+route.get('/addEmployee', addEmployee);
+route.post('/addNewEmployee',addNewEmployee);
 
 module.exports = route;

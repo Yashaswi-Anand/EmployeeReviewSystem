@@ -1,9 +1,11 @@
 <link rel="stylesheet" href="/CSS/style.css">
+
+<%- include('./partials/header.ejs') %>
 <div>
     <div class="rightcontainer">
         <a ><button>Admin</button></a>
         <a><button>Employee</button></a>
-        <button>Add Employee</button>
+        <a href="/user/addEmployee"><button>Add Employee</button></a>
     </div>
     <div class="container center">
         <% for(let user of users) { %>

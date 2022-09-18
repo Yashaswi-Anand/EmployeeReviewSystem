@@ -110,6 +110,28 @@ exports.editEmployee = async(req,res) =>{
     return res.render('editEmployee', {title: "Edit Employee", user: user});
 }
 
+exports.updateEditedEmployee = async(req,res) =>{
+    const userId = req.params.id;
+    await User.findByIdAndUpdate(userId,{
+        userName : req.body.userName,
+        email: req.body.email,
+        password : req.body.password,
+        status: req.body.status,
+        performanceReview: Number(req.body.performanceReview),
+        participation: req.body.participation
+    })
+    return res.redirect('/user/dashboard');
+}
+
+exports.addEmployee = (req,res) =>{
+    return res.render('addNewEmployee', {title: "Add New Employee"});
+}
+
+exports.addNewEmployee = async(req,res) => {
+    console.log(req.body);
+    await User.create(req.body);
+    return res.redirect('/user/dashboard');
+}
 
 
 

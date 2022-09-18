@@ -1,42 +1,35 @@
 <!-- <link rel="stylesheet" href="/CSS/signinSignup.css"> -->
 
 <div class="mt-5">
-    <form action="/user/updateEditedEmployee/<%= user._id %>" method="POST">
+    <form action="/user/addNewEmployee" method="POST">
         <div>
             <label for="name">Name:</label><br>
-            <input type="text" name="userName" value=<%= user.userName %> placeholder="Enter Name">
+            <input type="text" name="userName" placeholder="Enter Name">
         </div>
         <div>
             <label for="email">Email:</label><br>
-            <input type="text" name="email" value=<%= user.email %> placeholder="Enter Your email" required>
+            <input type="text" name="email" placeholder="Enter Your email" required>
         </div>
         <div>
             <label for="password">Password:</label><br>
-            <input type="password" name="password" value=<%= user.password %> placeholder="Password" required>
+            <input type="password" name="password" placeholder="Password" required>
         </div>
         <div>
             <label for="per_review">performance Review</label><br>
-            <input type="number" name="performanceReview" value=<%= user.performanceReview %> placeholder="per_review">
+            <input type="number" name="performanceReview" placeholder="per_review">
         </div>
         <div>
             <label for="paricipation_feedback">Paricipation Feedback</label><br>
-            <input type="text" name="participation" value=<%= user.participation %> placeholder="paricipation_feedback">
+            <input type="text" name="participation" placeholder="paricipation_feedback">
         </div>
         <div>
             <label for="status" class="fontSize">Status</label><br>
                 <span>
                     <!-- dropdown menu -->
-                    <% if(user.status !== "admin"){ %>
                         <select name="status" class="dropdown-items">
                             <option value="employee">Employee</option>
                             <option value="admin">Admin</option>
                         </select>
-                    <% }else{ %>
-                        <select name="status" class="dropdown-items">
-                            <option value="admin">Admin</option>
-                            <option value="employee">Employee</option>
-                        </select>
-                    <% } %>
                 </span>
         </div>
         <div>
