@@ -1,46 +1,74 @@
-<!-- <link rel="stylesheet" href="/CSS/signinSignup.css"> -->
+<link rel="stylesheet" href="/CSS/editAndNewEmployee.css">
 
-<div class="mt-5">
-    <form action="/user/updateEditedEmployee/<%= user._id %>" method="POST">
-        <div>
-            <label for="name">Name:</label><br>
-            <input type="text" name="userName" value=<%= user.userName %> placeholder="Enter Name">
+<div class="bg-success rounded-bottom rounded border border-light">
+    <div class="row p-3 d-flex justify-content-between">
+        <div class="col-4">
+            <h3 class="ms-5 text-light"><i class="fa-sharp fa-solid fa-marker"></i> Edit Empolyee</h3>
         </div>
-        <div>
-            <label for="email">Email:</label><br>
-            <input type="text" name="email" value=<%= user.email %> placeholder="Enter Your email" required>
+        <div class="col-2">
+            <a href="/user/dashboard" class="removeUnderline"><h3 class="ms-5 text-light">DashBoard</h3></a>
         </div>
-        <div>
-            <label for="password">Password:</label><br>
-            <input type="password" name="password" value=<%= user.password %> placeholder="Password" required>
-        </div>
-        <div>
-            <label for="per_review">performance Review</label><br>
-            <input type="number" name="performanceReview" value=<%= user.performanceReview %> placeholder="per_review">
-        </div>
-        <div>
-            <label for="paricipation_feedback">Paricipation Feedback</label><br>
-            <input type="text" name="participation" value=<%= user.participation %> placeholder="paricipation_feedback">
-        </div>
-        <div>
-            <label for="status" class="fontSize">Status</label><br>
-                <span>
-                    <!-- dropdown menu -->
-                    <% if(user.status !== "admin"){ %>
-                        <select name="status" class="dropdown-items">
-                            <option value="employee">Employee</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                    <% }else{ %>
-                        <select name="status" class="dropdown-items">
-                            <option value="admin">Admin</option>
-                            <option value="employee">Employee</option>
-                        </select>
+    </div>
+</div>
+
+
+<div class="wrapper">
+    <div class="ms-5 mt-5">
+        <form action="/user/updateEditedEmployee/<%= user._id %>" method="POST">
+            <div class="row d-flex justify-content-between">
+                <div class="col-4">
+                    <label for="name">Name:</label><br>
+                    <input type="text" name="userName" value=<%= user.userName %> placeholder="Enter Name">
+                </div>
+                <div class="col-4">
+                    <label for="email">Email:</label><br>
+                    <input type="text" name="email" value=<%= user.email %> placeholder="Enter Your email" required>
+                </div>
+                <div class="col-4">
+                    <label for="password">Password:</label><br>
+                    <input type="password" name="password" value=<%= user.password %> placeholder="Password" required>
+                </div>
+            </div>
+            <div class="row mt-5 d-flex justify-content-between">
+                <div class="col-4">
+                    <label for="name">Add Performance</label><br>
+                    <input type="text" name="performanceName" placeholder="Enter a performance">
+                    <% for(let item of myPerformanceList){ %>
+                            <li class="ms-3"><%= item %></li>
                     <% } %>
-                </span>
-        </div>
-        <div>
-            <button class="btn" type="submit">Save Update</button>
-        </div>
-    </form>
+                </div>
+                <div class="col-4">
+                    <label for="status" class="fontSize">Status</label><br>
+                    <span>
+                        <!-- dropdown menu -->
+                            <select name="participation" class="dropdown-items">
+                                <option value="<%= user.participation %>"><%= user.participation %></option>
+                                <option value="<%= !user.participation %>"><%= !user.participation %></option>
+                            </select>
+                    </span>
+                </div>
+                
+                <div class="col-4">
+                    <label for="status" class="fontSize">Status</label><br>
+                        <span>
+                            <!-- dropdown menu -->
+                            <% if(user.status !== "admin"){ %>
+                                <select name="status" class="dropdown-items">
+                                    <option value="employee">Employee</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            <% }else{ %>
+                                <select name="status" class="dropdown-items">
+                                    <option value="admin">Admin</option>
+                                    <option value="employee">Employee</option>
+                                </select>
+                            <% } %>
+                        </span>
+                </div>
+            </div>
+            <div>
+                <button class="btn" type="submit"><h3><i>SAVE & UPDATE</i></h3></button>
+            </div>
+        </form>
+    </div>
 </div>

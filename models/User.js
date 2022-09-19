@@ -24,7 +24,11 @@ const userSchema = mongoose.Schema({
     participation:{
         type:Boolean,
         default: false
-    }
+    },
+    performancelist:[{
+        type: mongoose.Types.ObjectId,
+        ref:'PerformanceList',
+    }]
 },{ timeStamps: true})
 
 const User = mongoose.model("User", userSchema);

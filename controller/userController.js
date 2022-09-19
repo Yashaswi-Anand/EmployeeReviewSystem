@@ -1,3 +1,4 @@
+const PerformanceList = require("../models/performanceList");
 const User = require("../models/User")
 
 // create new user
@@ -40,7 +41,7 @@ exports.signIn = async(req,res) =>{
 // get all user
 exports.getUser = async(req,res) =>{
     try {
-        const user = await User.find();
+        const user = await User.find().populate('performancelist','performanceItems');
         if(user.length == 0){
             return res.status(400).json({message: "User not found"})
         }
@@ -107,19 +108,50 @@ exports.deleteEmployee = async(req,res) =>{
 exports.editEmployee = async(req,res) =>{
     const userId = req.params.id;
     const user = await User.findOne({"_id": userId});
-    return res.render('editEmployee', {title: "Edit Employee", user: user});
+    //console.log(user);
+    var myPerformanceList = [];
+    const performanceList = user.performancelist;
+    
+    for(let id of performanceList){
+        const item = await PerformanceList.findById(id);
+        //console.log(item);
+        myPerformanceList.push(item.performanceItems);
+    }
+    //console.log(myPerformanceList);
+    return res.render('editEmployee', {title: "Edit Employee", user: user, myPerformanceList:myPerformanceList});
 }
 
 exports.updateEditedEmployee = async(req,res) =>{
     const userId = req.params.id;
+    console.log(req.body);
+    const user = await User.findOne({'_id': userId});
+    var performanceCount = user.performancelist.length;
+
+    // create performance
+    if(req.body.performanceName !== ""){
+        var performanceItem = await PerformanceList.create({
+            performanceItems:  req.body.performanceName
+        });
+        console.log(performanceItem);
+        
+        user.performancelist.push(performanceItem.id);
+        user.save();
+        console.log(user.performancelist);
+            
+        performanceCount = user.performancelist.length;
+        console.log(performanceCount);
+    }
+    
+    // update date
     await User.findByIdAndUpdate(userId,{
         userName : req.body.userName,
         email: req.body.email,
         password : req.body.password,
         status: req.body.status,
-        performanceReview: Number(req.body.performanceReview),
+        performanceReview: Number(performanceCount),
         participation: req.body.participation
     })
+    
     return res.redirect('/user/dashboard');
 }
 
