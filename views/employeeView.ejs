@@ -1,26 +1,53 @@
-
-<div class="container">
-    <% for(let user=0; user < users.length; user++) { %>
-            <div class="row p-1 list-design w-100 bg-info">
-                <div class="col-2">
-                    <h3><%= users[user].userName %></h3>
+<header> 
+    <div class="m-0 row p-3 d-flex justify-content-between bg-success rounded border border-light">
+        <div class="col-4">
+            <h3 class="text-light"><i class="fa-solid fa-clipboard-list"></i><i><b> Employee Review System</b></i></h3>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-3">
+            <h3 class="text-light"><i>hi! user name</i></h3>
+        </div>
+        <div class="col-2">
+            <a href="/user/addEmployee"><button  class="btn btn-light"> Logout</button></a>
+        </div>
+    </div>
+</header>
+<div class="wrapper1">
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-3">
+                <h3 class="text-warning">Name</h3>
+            </div>
+            <div class="col-3">
+                <h3 class="text-warning">Email</h3>
+            </div>
+            <div class="col-5">
+                <h3 class="text-warning">Performance List & Feedback</h3>
+            </div>
+        </div>
+        <hr>
+        <% for(let user=0; user < users.length; user++) { %>
+                <div class="row p-1 list-design w-100">
+                    <div class="col-3 text-light">
+                        <h3><%= users[user].userName %></h3>
+                    </div>
+                    <div class="col-3 text-light">
+                        <h3><%= users[user].email %></h3>
+                    </div>
+                    <div class="col-6 text-light">
+                       <% for(let i of performanceReviewList[user][users[user].email]){ %>
+                           <li><%= i %></li>
+                       <% } %>
+                        <div>
+                            <span><textarea rows="1" cols="35" name="feedback" placeholder="Add your feedback..."></textarea></span>
+                            <a href=""><i class="fa-solid fa-paper-plane feedback-btn"></i></a>
+                        </div>
+                    </div>  
                 </div>
-                <div class="col-4">
-                    <h3><%= users[user].email %></h3>
-                </div>
-                <div class="col-3">
-                   <% for(let i of performanceReviewList[user][users[user].email]){ %>
-                       <li><h4><%= i %></h4></li>
-                   <% } %>
-                </div>
+    
                 <div>
-                    <textarea name="feedback" placeholder="Add your feedback..."></textarea>
-                    <button type="submit">Send</button> 
+                    <%= user.performancelist %>
                 </div>
-            </div>
-
-            <div>
-                <%= user.performancelist %>
-            </div>
-    <% } %>
+        <% } %>
+    </div>
 </div>

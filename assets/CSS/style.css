@@ -1,3 +1,45 @@
 body{
-    background-color: aqua;
+    background-image: url('https://www.247hrm.com/wp-content/uploads/2016/07/tech-background-image-2.jpg');
+}
+
+.wrapper{
+    background-color: rgba(255, 255, 255, 0.322); 
+    height: 35.5rem;
+    padding: 20px 0px 0px 0px;
+}
+
+.wrapper1{
+    background-color: rgba(255, 255, 255, 0.322); 
+    height: 100vh;
+    padding: 20px 0px 0px 0px;
+}
+
+button{
+    margin: 10px;
+    padding: 1px;
+    width: 10rem;
+}
+
+textarea{
+    border: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 7px;
+    background-color: rgba(245, 245, 245, 0.815);
+    margin-top: 15px;
+}
+
+.feedback-btn{
+    text-align: center;
+    border: solid 1px green;
+    border-radius: 10px;
+    padding: 6px;
+    color: green;
+    font-size: 1.5rem;
+    background-color:  rgba(245, 245, 245, 0.815);;
+}
+
+.feedback-btn:hover{
+    color: white;
+    background-color: green;
 }
