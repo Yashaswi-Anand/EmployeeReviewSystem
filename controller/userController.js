@@ -88,9 +88,27 @@ exports.dashboard = async(req,res)=>{
 exports.employeeView = async(req,res) =>{
     try {
         const users = await User.find();
+        var performanceReviewList = [];
+        for(var u of users){
+            const pArray = u.performancelist;
+            var alist = {};
+        
+            var list =[];
+            for(var id of pArray){
+                const performanceReview = await PerformanceList.findById(id);
+                list.push(performanceReview.performanceItems);
+            }
+            // console.log(list);
+            alist[u.email] = list;
+            performanceReviewList.push(alist);
+        }
+        console.log(performanceReviewList[3]['user4@gmail.com'][0]);
+
+
         return res.render('employeeView',{
             title:"EWS | Dashboard",
-            users:users
+            users:users,
+            performanceReviewList,performanceReviewList
         });
     } catch (error) {
         return res.status(500).json({message: "Internal server error."})
