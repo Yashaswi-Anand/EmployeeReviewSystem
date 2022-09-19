@@ -4,7 +4,7 @@ const app = express();
 const db = require('./config/mongoose');
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
-
+const cookieParser = require('cookie-parser');
 
 // add static files
 app.use(express.static('assets'));
@@ -13,6 +13,8 @@ app.use('/CSS',express.static('assets/CSS'));
 // body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+// cookie parser
+app.use(cookieParser());
 
 // set the view engine
 app.use(expressLayouts);

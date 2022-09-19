@@ -30,11 +30,25 @@ exports.createUser = async(req,res) =>{
 
 // signUp user
 exports.signUp = async(req,res) =>{
+    if(req.cookies.userId){
+        const user = await User.findById(req.cookies.userId);
+        if(user.status === "admin")
+            return res.redirect('/user/dashboard');
+        else
+            return res.redirect('/user/employeeView');
+    }
     return res.render('signUp',{title:"ERS | SignUp"});
 }
 
 // signIn user
 exports.signIn = async(req,res) =>{
+    if(req.cookies.userId){
+        const user = await User.findById(req.cookies.userId);
+        if(user.status === "admin")
+            return res.redirect('/user/dashboard');
+        else
+            return res.redirect('/user/employeeView');
+    }
     return res.render('signIn',{title:"SignIn"});
 }
 
@@ -62,6 +76,8 @@ exports.loginUser = async(req,res) =>{
         if(user.password !== req.body.password){
             return res.status(400).json({message: "Invalid password"})
         }
+        // cookies parser
+        res.cookie('userId',user.id);
         // return res.status(200).json({user,message: "User successfully found."})
         if(user.status === "admin")
             return res.redirect('/user/dashboard');
@@ -76,9 +92,11 @@ exports.loginUser = async(req,res) =>{
 exports.dashboard = async(req,res)=>{
     try {
         const users = await User.find();
+        const userDate = await User.findById(req.cookies.userId);
         return res.render('dashboard',{
             title:"EWS | Dashboard",
-            users:users
+            users:users,
+            userName: userDate.userName
         });
     } catch (error) {
         return res.status(500).json({message: "Internal server error."})
@@ -102,13 +120,14 @@ exports.employeeView = async(req,res) =>{
             alist[u.email] = list;
             performanceReviewList.push(alist);
         }
-        console.log(performanceReviewList[3]['user4@gmail.com'][0]);
-
+        //console.log(performanceReviewList[3]['user4@gmail.com'][0]);
+        const userDate = await User.findById(req.cookies.userId);
 
         return res.render('employeeView',{
             title:"EWS | Dashboard",
             users:users,
-            performanceReviewList,performanceReviewList
+            performanceReviewList,performanceReviewList,
+            userName: userDate.userName
         });
     } catch (error) {
         return res.status(500).json({message: "Internal server error."})
@@ -124,6 +143,9 @@ exports.deleteEmployee = async(req,res) =>{
 }
 
 exports.editEmployee = async(req,res) =>{
+    if(!req.cookies.userId){
+        return res.redirect('/user/signIn');
+    }
     const userId = req.params.id;
     const user = await User.findOne({"_id": userId});
     //console.log(user);
@@ -150,14 +172,14 @@ exports.updateEditedEmployee = async(req,res) =>{
         var performanceItem = await PerformanceList.create({
             performanceItems:  req.body.performanceName
         });
-        console.log(performanceItem);
+        //console.log(performanceItem);
         
         user.performancelist.push(performanceItem.id);
         user.save();
-        console.log(user.performancelist);
+        //console.log(user.performancelist);
             
         performanceCount = user.performancelist.length;
-        console.log(performanceCount);
+        //console.log(performanceCount);
     }
     
     // update date
@@ -174,13 +196,22 @@ exports.updateEditedEmployee = async(req,res) =>{
 }
 
 exports.addEmployee = (req,res) =>{
-    return res.render('addNewEmployee', {title: "Add New Employee"});
+    if(req.cookies.userId){
+        return res.render('addNewEmployee', {title: "Add New Employee"});
+    }
+    return res.redirect('/user/signIn');
 }
 
 exports.addNewEmployee = async(req,res) => {
-    console.log(req.body);
+    //console.log(req.body);
     await User.create(req.body);
     return res.redirect('/user/dashboard');
+}
+
+// logout
+exports.logout = (req,res) =>{
+    res.clearCookie('userId');
+    return res.redirect('/user/signIn');
 }
 
 

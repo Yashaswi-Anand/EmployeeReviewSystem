@@ -1,5 +1,5 @@
 const express = require('express');
-const { createUser, getUser, loginUser, signUp, signIn, dashboard, deleteEmployee, editEmployee, employeeView, updateEditedEmployee, addEmployee, addNewEmployee } = require('../controller/userController');
+const { createUser, getUser, loginUser, signUp, signIn, dashboard, deleteEmployee, editEmployee, employeeView, updateEditedEmployee, addEmployee, addNewEmployee, logout } = require('../controller/userController');
 const route = express.Router();
 
 // signUp user
@@ -25,5 +25,7 @@ route.post('/updateEditedEmployee/:id',updateEditedEmployee);
 // add new employee
 route.get('/addEmployee', addEmployee);
 route.post('/addNewEmployee',addNewEmployee);
+// logout
+route.get('/logout',logout);
 
 module.exports = route;

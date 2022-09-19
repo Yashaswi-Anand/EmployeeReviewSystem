@@ -1,6 +1,21 @@
 <link rel="stylesheet" href="/CSS/style.css">
 
-<%- include('./partials/header.ejs') %>
+<header> 
+    <div class="m-0 row p-3 d-flex justify-content-between bg-success rounded border border-light">
+        <div class="col-4">
+            <h3 class="text-light"><i class="fa-solid fa-clipboard-list"></i><i><b> Employee Review System</b></i></h3>
+        </div>
+        <div class="col-3">
+            <h3 class="text-light"><i>hey <%= userName %>!</i></h3>
+        </div>
+        <div class="col-1">
+            <a href="/user/addEmployee"><button  class="btn btn-light"><i class="fa-solid fa-user-plus"></i> Add Employee</button></a>
+        </div>
+        <div class="col-2">
+            <a href="/user/logout"><button  class="btn btn-light"> Logout</button></a>
+        </div>
+    </div>
+</header>
 
 <div class="row m-0 wrapper">
     <div class="col-2">
