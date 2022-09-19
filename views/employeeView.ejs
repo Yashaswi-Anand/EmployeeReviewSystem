@@ -26,10 +26,12 @@
             </div>
         </div>
         <hr>
+   
         <% for(let user=0; user < users.length; user++) { %>
+ 
                 <div class="row p-1 list-design w-100">
                     <div class="col-3 text-light">
-                        <h3><%= users[user].userName %></h3>
+                        <h3><%= users[user].userName %> </h3>
                     </div>
                     <div class="col-3 text-light">
                         <h3><%= users[user].email %></h3>
@@ -39,15 +41,15 @@
                            <li><%= i %></li>
                        <% } %>
                         <div>
-                            <span><textarea rows="1" cols="35" name="feedback" placeholder="Add your feedback..."></textarea></span>
-                            <a href=""><i class="fa-solid fa-paper-plane feedback-btn"></i></a>
+                            <form action="/feedback/createFeedback/<%= users[user]._id %>" method="POST">
+                                <span><input type="text" name="feedback" placeholder="Add your feedback..."></span>
+                                <button type="submit"><i class="fa-solid fa-paper-plane feedback-btn"></i></button>
+                            </form>
                         </div>
                     </div>  
                 </div>
-    
-                <div>
-                    <%= user.performancelist %>
-                </div>
+            
+           
         <% } %>
     </div>
 </div>

@@ -28,6 +28,10 @@ const userSchema = mongoose.Schema({
     performancelist:[{
         type: mongoose.Types.ObjectId,
         ref:'PerformanceList',
+    }],
+    feedbacklist:[{
+        type:mongoose.Types.ObjectId,
+        ref:'Feedback'
     }]
 },{ timeStamps: true})
 

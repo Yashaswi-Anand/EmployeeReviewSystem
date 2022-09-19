@@ -55,7 +55,9 @@ exports.signIn = async(req,res) =>{
 // get all user
 exports.getUser = async(req,res) =>{
     try {
-        const user = await User.find().populate('performancelist','performanceItems');
+        const user = await User.find()
+        .populate('performancelist','performanceItems')
+        .populate('feedbacklist');
         if(user.length == 0){
             return res.status(400).json({message: "User not found"})
         }

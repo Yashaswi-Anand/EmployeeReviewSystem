@@ -24,6 +24,7 @@ app.set('view engine', 'ejs');
 
 // user routes
 app.use('/user', require('./routes/userRoutes'));
+app.use('/feedback',require('./routes/feedbackRoute'));
 
 app.get('/', (req,res) =>{
     return res.send("helo");

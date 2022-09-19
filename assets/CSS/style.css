@@ -20,20 +20,19 @@ button{
     width: 10rem;
 }
 
-textarea{
+input{
     border: none;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     padding: 7px;
-    background-color: rgba(245, 245, 245, 0.815);
-    margin-top: 15px;
 }
 
 .feedback-btn{
     text-align: center;
     border: solid 1px green;
-    border-radius: 10px;
-    padding: 6px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 7px;
     color: green;
     font-size: 1.5rem;
     background-color:  rgba(245, 245, 245, 0.815);;
