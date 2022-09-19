@@ -1,5 +1,5 @@
 <header> 
-    <div class="m-0 row p-3 d-flex justify-content-between bg-success rounded border border-light">
+    <div class="m-0 row p-3 d-flex justify-content-between backgroundHeader rounded border border-light">
         <div class="col-4">
             <h3 class="text-light"><i class="fa-solid fa-clipboard-list"></i><i><b> Employee Review System</b></i></h3>
         </div>
@@ -42,14 +42,14 @@
                        <% } %>
                         <div>
                             <form action="/feedback/createFeedback/<%= users[user]._id %>" method="POST">
-                                <span><input type="text" name="feedback" placeholder="Add your feedback..."></span>
-                                <button type="submit"><i class="fa-solid fa-paper-plane feedback-btn"></i></button>
+                                <div class="input-group mb-3">
+                                    <input type="text" name="feedback" placeholder="  Add your feedback..." >
+                                    <div class="input-group-append"><button class="feedback-btn w-100 p-1" type="submit"><i class="fa-solid fa-paper-plane "></i></button></div>
+                                </div>
                             </form>
                         </div>
                     </div>  
                 </div>
-            
-           
         <% } %>
     </div>
 </div>

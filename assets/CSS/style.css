@@ -8,9 +8,13 @@ body{
     padding: 20px 0px 0px 0px;
 }
 
+.backgroundHeader{
+    background-color: #354259;
+}
+
 .wrapper1{
     background-color: rgba(255, 255, 255, 0.322); 
-    height: 100vh;
+    height: 110vh;
     padding: 20px 0px 0px 0px;
 }
 
@@ -24,18 +28,18 @@ input{
     border: none;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    padding: 7px;
+    height: 3rem;
 }
 
 .feedback-btn{
-    text-align: center;
+    /* text-align: center; */
     border: solid 1px green;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    padding: 7px;
     color: green;
     font-size: 1.5rem;
-    background-color:  rgba(245, 245, 245, 0.815);;
+    padding: 10px;
+    background-color: white
 }
 
 .feedback-btn:hover{
