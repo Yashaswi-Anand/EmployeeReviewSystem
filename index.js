@@ -6,6 +6,14 @@ const db = require('./config/mongoose');
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
 const cookieParser = require('cookie-parser');
+var cors = require('cors')
+
+
+//cors
+var corsOptions = {
+    origin: '*',
+}
+app.use(cors(corsOptions));
 
 // add static files
 app.use(express.static('assets'));
