@@ -96,7 +96,7 @@ exports.dashboard = async(req,res)=>{
         const users = await User.find();
         const userDate = await User.findById(req.cookies.userId);
         return res.render('dashboard',{
-            title:"ERS | Dashboard",
+            title:"ERS | Admin",
             users:users,
             userName: userDate.userName
         });
@@ -126,7 +126,7 @@ exports.employeeView = async(req,res) =>{
         const userDate = await User.findById(req.cookies.userId);
 
         return res.render('employeeView',{
-            title:"EWS | Dashboard",
+            title:"ERS | Employee",
             users:users,
             performanceReviewList,performanceReviewList,
             userName: userDate.userName
