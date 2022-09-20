@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect( 'mongodb://localhost/EmployeReviewSystem',{
+mongoose.connect(process.env.MONGO_URL ||'mongodb://localhost/EmployeReviewSystem',{
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

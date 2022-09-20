@@ -96,7 +96,7 @@ exports.dashboard = async(req,res)=>{
         const users = await User.find();
         const userDate = await User.findById(req.cookies.userId);
         return res.render('dashboard',{
-            title:"EWS | Dashboard",
+            title:"ERS | Dashboard",
             users:users,
             userName: userDate.userName
         });
