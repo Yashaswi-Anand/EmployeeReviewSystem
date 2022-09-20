@@ -4,7 +4,7 @@ body{
 
 .wrapper{
     background-color: rgba(255, 255, 255, 0.322); 
-    height: 35.5rem;
+    height: 40rem;
     padding: 20px 0px 0px 0px;
 }
 
@@ -14,7 +14,7 @@ body{
 
 .wrapper1{
     background-color: rgba(255, 255, 255, 0.322); 
-    height: 110vh;
+    height: 150%;
     padding: 20px 0px 0px 0px;
 }
 

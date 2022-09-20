@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/CSS/editAndNewEmployee.css">
 
-<div class="backgroundHeader rounded-bottom rounded border border-light">
-    <div class="row p-3 d-flex justify-content-between">
+<header> 
+    <div class="m-0 row p-3 d-flex justify-content-between backgroundHeader rounded border border-light">
         <div class="col-4">
             <h3 class="ms-5 text-light"><i class="fa-sharp fa-solid fa-marker"></i> Edit Empolyee</h3>
         </div>
@@ -9,14 +9,13 @@
             <a href="/user/dashboard" class="removeUnderline"><h3 class="ms-5 text-light">Home</h3></a>
         </div>
     </div>
-</div>
+</header>
 
-
-<div class="wrapper">
-    <div class="ms-5 mt-5">
+<main>
+    <div class="wrapper">
         <form action="/user/updateEditedEmployee/<%= user._id %>" method="POST">
-            <div class="row d-flex justify-content-between">
-                <div class="col-4">
+            <div class="m-0 ms-4 row d-flex justify-content-between">
+                <div class="m-0 col-4">
                     <label for="name">Name:</label><br>
                     <input type="text" name="userName" value=<%= user.userName %> placeholder="Enter Name">
                 </div>
@@ -29,7 +28,7 @@
                     <input type="password" name="password" value=<%= user.password %> placeholder="Password" required>
                 </div>
             </div>
-            <div class="row mt-5 d-flex justify-content-between">
+            <div class="m-0 ms-4 row mt-5 d-flex justify-content-between">
                 <div class="col-4">
                     <label for="name">Add Performance</label><br>
                     <input type="text" name="performanceName" placeholder="Enter a performance">
@@ -46,12 +45,74 @@
                                 <option value="<%= !user.participation %>"><%= !user.participation %></option>
                             </select>
                     </span>
-                </div>
+                </div> 
                 
                 <div class="col-4">
                     <label for="status" class="fontSize">Status</label><br>
                         <span>
-                            <!-- dropdown menu -->
+                            <!-- dropdown menu --> 
+                            <% if(user.status !== "admin"){ %>
+                                <select name="status" class="dropdown-items">
+                                    <option value="employee">Employee</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            <% }else{ %>
+                                <select name="status" class="dropdown-items">
+                                    <option value="admin">Admin</option>
+                                    <option value="employee">Employee</option>
+                                </select>
+                            <% } %>
+                        </span>
+                </div>
+            </div>
+            <div>
+                <button class="btn ms-4" type="submit"><h3><i>SAVE & UPDATE</i></h3></button>
+            </div>
+        </form>
+    </div>
+</main>
+
+
+<!--
+<div class="wrapper">
+        <form action="/user/updateEditedEmployee/<%= user._id %>" method="POST">
+            <div class="row d-flex justify-content-between">
+                <div class="m-0 col-4">
+                    <label for="name">Name:</label><br>
+                    <input type="text" name="userName" value=<%= user.userName %> placeholder="Enter Name">
+                </div>
+                <div class="col-4">
+                    <label for="email">Email:</label><br>
+                    <input type="text" name="email" value=<%= user.email %> placeholder="Enter Your email" required>
+                </div>
+                <div class="col-4">
+                    <label for="password">Password:</label><br>
+                    <input type="password" name="password" value=<%= user.password %> placeholder="Password" required>
+                </div>
+            </div>
+            <div class="m-0 row mt-5 d-flex justify-content-between">
+                <div class="col-4">
+                    <label for="name">Add Performance</label><br>
+                    <input type="text" name="performanceName" placeholder="Enter a performance">
+                    <% for(let item of myPerformanceList){ %>
+                            <li class="ms-3"><%= item %></li>
+                    <% } %>
+                </div>
+                <div class="col-4">
+                    <label for="status" class="fontSize">Status</label><br>
+                    <span>
+                        <!-- dropdown menu --> <!--
+                            <select name="participation" class="dropdown-items">
+                                <option value="<%= user.participation %>"><%= user.participation %></option>
+                                <option value="<%= !user.participation %>"><%= !user.participation %></option>
+                            </select>
+                    </span>
+                </div> 
+                
+                <div class="col-4">
+                    <label for="status" class="fontSize">Status</label><br>
+                        <span>
+                             dropdown menu --> <!--
                             <% if(user.status !== "admin"){ %>
                                 <select name="status" class="dropdown-items">
                                     <option value="employee">Employee</option>
@@ -70,5 +131,5 @@
                 <button class="btn" type="submit"><h3><i>SAVE & UPDATE</i></h3></button>
             </div>
         </form>
-    </div>
-</div>
+    
+</div> -->

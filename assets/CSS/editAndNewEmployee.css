@@ -13,10 +13,10 @@ body{
 
 .wrapper{
     background-color: rgba(255, 255, 255, 0.521); 
-    height: 33.5rem;
+    height: 35rem;
     padding: 20px 0px 0px 0px;
+    width: 100%;
 }
-
 label{
     color: #354259;
     padding: 10px;
