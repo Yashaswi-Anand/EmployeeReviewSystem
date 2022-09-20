@@ -35,11 +35,15 @@ app.set('view engine', 'ejs');
 app.use('/user', require('./routes/userRoutes'));
 app.use('/feedback',require('./routes/feedbackRoute'));
 
+// app.get('/', (req,res) =>{
+//     if(req.cookies.userId){
+//         return res.redirect('/user/dashboard')
+//     }
+//     return res.redirect('/user/signIn');
+// })
+
 app.get('/', (req,res) =>{
-    if(req.cookies.userId){
-        return res.redirect('/user/dashboard')
-    }
-    return res.redirect('/user/signIn');
+    res.send('Node js deploy.')
 })
 
 app.listen(port, function(err){
