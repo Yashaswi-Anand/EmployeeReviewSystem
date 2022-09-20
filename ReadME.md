@@ -30,6 +30,21 @@ This application that allow to submit feedback toward each other's performance. 
 - Ejs
 - MongoDB
 
+## Project Demo
+# SignUP
+![image](https://github.com/Yashaswi-Anand/EmployeeReviewSystem/blob/master/screenshots/signup.png)
+# SignIn
+![image](https://github.com/Yashaswi-Anand/EmployeeReviewSystem/blob/master/screenshots/signin.png)
+# Add Employee
+![image](https://github.com/Yashaswi-Anand/EmployeeReviewSystem/blob/master/screenshots/add.png)
+# Edit Employee
+![image](https://github.com/Yashaswi-Anand/EmployeeReviewSystem/blob/master/screenshots/edit.png)
+# Admin Dashboard
+![image](https://github.com/Yashaswi-Anand/EmployeeReviewSystem/blob/master/screenshots/admin.png)
+# Employee Dashboard
+![image](https://github.com/Yashaswi-Anand/EmployeeReviewSystem/blob/master/screenshots/employee.png)
+
+
 ## Deployment
 - Heroku (nodejs server)
 - MongoDB Atlas (for database)
